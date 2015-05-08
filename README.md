@@ -1,4 +1,7 @@
-# fabienb4:autoform-semantic-ui
+# fuatsengul:autoform-semantic-ui
+
+This package forked from fabienb4:autoform-semantic-ui for displaying multiple icons in select bars and little bit styling concerns.
+
 
 Semantic-ui template for `aldeed:autoform` package.
 
