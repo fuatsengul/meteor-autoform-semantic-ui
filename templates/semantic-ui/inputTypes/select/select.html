@@ -1,9 +1,18 @@
 <template name="afSelect_semanticUI">
-  <div class="fluid field">
+  <div class="fluid field {{this.atts.specialClass}}">
     <div {{divAtts}}>
       <input type="hidden" {{this.atts}} value="{{this.value}}">
       {{#if this.value}}
-        <div class="text">{{label}}</div>
+        <div class="text">
+          {{#if image}}
+            <img class="ui middle aligned small image" src="{{image}}">
+          {{/if}}
+          <!-- {{this.value}} -->
+
+          {{#each icons}}
+            <i class="{{this}}"></i>
+          {{/each}}
+        {{label}}</div>
       {{else}}
         <div class="default text">{{placeholder}}</div>
       {{/if}}
@@ -17,17 +26,28 @@
             <div class="header">{{this.itemGroup}}</div>
             {{#each this.items}}
               <div {{itemHtmlAtts}} data-value="{{this.value}}">
+                
+                {{#if this.image}}
+                  <img class="ui middle aligned small image" src="{{this.image}}">
+                {{/if}}
+
                 {{#if this.icon}}
-                  <i class="{{this.icon}}"></i>
+                  {{#each this.icon}}
+                    <i class="{{this}}"></i>
+                  {{/each}}
                 {{/if}}
                 {{this.label}}
               </div>
             {{/each}}
           {{else}}
             <div {{itemHtmlAtts}} data-value="{{this.value}}">
-              {{#if this.icon}}
-                <i class="{{this.icon}}"></i>
-              {{/if}}
+                {{#if this.image}}
+                  <img class="ui middle aligned small image" src="{{this.image}}">
+                {{/if}}
+
+                {{#each this.icon}}
+                  <i class="{{this}}"></i>
+                {{/each}}
               {{this.label}}
             </div>
           {{/if}}

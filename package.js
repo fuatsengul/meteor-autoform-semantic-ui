@@ -1,6 +1,6 @@
 Package.describe({
-  name: 'fabienb4:autoform-semantic-ui',
-  version: '0.3.4',
+  name: 'fuatsengul:autoform-semantic-ui',
+  version: '0.0.11',
   // Brief, one-line summary of the package.
   summary: 'Semantic-ui template for aldeed:autoform package.',
   // URL to the Git repository containing the source code for this package.
@@ -49,6 +49,8 @@ Package.onUse(function(api) {
     'templates/semantic-ui/inputTypes/search/search.html',
     'templates/semantic-ui/inputTypes/select/select.html',
     'templates/semantic-ui/inputTypes/select/select.js',
+    'templates/semantic-ui/inputTypes/select-buttonFS/select-buttonFS.js',
+    'templates/semantic-ui/inputTypes/select-buttonFS/select-buttonFS.html',
     'templates/semantic-ui/inputTypes/select-checkbox/select-checkbox.html',
     'templates/semantic-ui/inputTypes/select-checkbox/select-checkbox.js',
     'templates/semantic-ui/inputTypes/select-radio/select-radio.html',

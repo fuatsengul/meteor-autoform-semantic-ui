@@ -1,6 +1,8 @@
 <template name="afObjectField_semanticUI">
-  {{#with afFieldLabelText name=this.name}}
+  {{#with afFieldLabelText name=this.atts.label}}
+  	{{#if this}}
     <h4 class="ui top attached block header">{{this}}</h4>
+    {{/if}}
   {{/with}}
   <div class="ui secondary bottom attached segment form error">
     {{#if afFieldIsInvalid name=this.name}}

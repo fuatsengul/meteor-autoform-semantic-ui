@@ -10,6 +10,12 @@ Template.afFormGroup_semanticUI.helpers({
       return "required";
     }
   },
+  icon: function(){
+    return this.afFieldInputAtts.icon;
+  },
+  iconDirection: function(){
+    return this.afFieldInputAtts.iconDirection;
+  },
   errorsInLabel: function() {
     return AutoForm.findAttribute("errorsInLabels") || this.afFieldInputAtts.errorsInLabel;
   }

@@ -1,4 +1,4 @@
-AutoForm.addInputType("select", {
+AutoForm.addInputType("selectFS", {
 	template: "afSelect",
 	valueOut: function () {
 		return this.val();
@@ -55,10 +55,10 @@ AutoForm.addInputType("select", {
 		delete context.atts.firstOption;
 
 		var itemAtts = _.omit(context.atts, "placeholder");
+		// console.log(itemAtts);
 
 		// build items list
 		context.items = [];
-
 		// Add all defined options
 		_.each(context.selectOptions, function(item) {
 			if (item.itemGroup) {
@@ -67,8 +67,9 @@ AutoForm.addInputType("select", {
 						name: context.name,
 						label: subItem.label,
 						icon: subItem.icon || false,
+						image: subItem.image || false,
 						value: subItem.value,
-						htmlAtts: _.extend({ class: "item" }, _.omit(subItem, "label", "value")),
+						htmlAtts: _.extend({ class: "item" }, _.omit(subItem, "label", "value", "icon", "image")),
 						// _id must be included because it is a special property that
 						// #each uses to track unique list items when adding and removing them
 						// See https://github.com/meteor/meteor/issues/2174
@@ -91,8 +92,9 @@ AutoForm.addInputType("select", {
 					name: context.name,
 					label: item.label,
 					icon: item.icon || false,
+					image: item.image || false,
 					value: item.value,
-					htmlAtts: _.extend({ class: "item" }, _.omit(item, "label", "value")),
+					htmlAtts: _.extend({ class: "item" }, _.omit(item, "label", "value", "icon", "image")),
 					// _id must be included because it is a special property that
 					// #each uses to track unique list items when adding and removing them
 					// See https://github.com/meteor/meteor/issues/2174
@@ -105,9 +107,10 @@ AutoForm.addInputType("select", {
 					selected: (item.value === context.value),
 					atts: itemAtts
 				});
+
+
 			}
 		});
-
 		return context;
 	}
 });
@@ -120,6 +123,11 @@ Template.afSelect_semanticUI.helpers({
 			// Add search class
 			atts = AutoForm.Utility.addClass(atts, "search");
 		}
+
+		// if(this.options.specialClass)
+		// {
+		// 	atts = AutoForm.Utility.addClass(atts, this.options.specialClass);
+		// }
 
 		return atts;
 	},
@@ -134,10 +142,27 @@ Template.afSelect_semanticUI.helpers({
 
 		return currentItem.label;
 	},
+	icons: function(){
+		var value       = this.value;
+		var currentItem = _.find(this.items, function(item) {
+			return item.value === value;
+		});
+
+		return currentItem.icon;
+	},
+	image: function(){
+		var value       = this.value;
+		var currentItem = _.find(this.items, function(item) {
+			return item.value === value;
+		});
+
+		return currentItem.image;
+	},
 	required: function() {
 		return this.atts.required === "";
 	},
 	itemHtmlAtts: function() {
+		// console.log(this.htmlAtts);
 		var atts = this.htmlAtts;
 
 		if (this.selected) {

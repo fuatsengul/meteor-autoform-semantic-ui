@@ -14,9 +14,19 @@
         {{/if}}
       </label>
     {{/unless}}
-    {{> afFieldInput this.afFieldInputAtts}}
+    
+    {{#if icon}}
+      <div class="ui {{iconDirection}} icon input">
+        <i class="{{icon}} icon"></i>
+        {{> afFieldInput this.afFieldInputAtts}}
+      </div>
+    {{else}}
+      {{> afFieldInput this.afFieldInputAtts}}
+    {{/if}}
     {{#unless errorsInLabel}}
-      <div class="error message">{{{afFieldMessage name=this.name}}}</div>
+    {{#if afFieldIsInvalid name=this.name}}
+       <div class="ui red pointing prompt label transition">{{{afFieldMessage name=this.name}}}</div>
+    {{/if}}
     {{/unless}}
   </div>
 </template>
